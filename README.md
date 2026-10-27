@@ -1,15 +1,39 @@
-# SigmaOS-tray-icon
+    # SigmaOS-tray-icon
 
-Part of the SigmaOS multi-repository architecture.
+    System tray icon host (XAppStatusIcon)
 
-## Principles
-- MODULARITY: Single responsibility per repository
-- LOOSE COUPLING: Minimal dependencies between repos
-- INTERFACE SEGREGATION: Clear, focused public APIs
-- DETERMINISTIC TESTING: Comprehensive test coverage
+    Part of the **SigmaOS** sovereign operating-system ecosystem — a multi-repository
+    distribution modelled on Linux Mint and Omarchy Linux. See the parent
+    [`SigmaOS`](https://github.com/AaryanSinghChauhan09/SigmaOS) repository for the
+    full component index.
 
-## License
-SPDX-License-Identifier: GPL-3.0-or-later
+    ## Upstream inspirations
+    - https://github.com/linuxmint/rhythmbox-tray-icon
 
-## Copyright
-Copyright (C) 2026 SigmaOS Project
+    ## Design principles applied
+    - **Encapsulation**
+- **Information Hiding**
+- **Fail-Fast**
+- **KISS**
+- **Separation of Concerns**
+- **Deterministic Testing**
+
+    ## Usage
+    Verbs: `register, icon, menu, emit`
+
+    ```
+    $ sigma-tray register rhythmbox --icon media-player
+$ sigma-tray icon rhythmbox --set media-player-paused
+$ sigma-tray menu rhythmbox --item "play:Play" --item "pause:Pause"
+$ sigma-tray emit rhythmbox --event menu-action --payload play
+
+    ```
+
+    ## Build & test
+    ```
+    make build
+    make test
+    ```
+
+    ## Licence
+    GNU General Public License v3.0 (FOSS).
