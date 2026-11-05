@@ -1,0 +1,6 @@
+[component]
+name = "SigmaOS-tray-icon"
+tier = 3
+description = "System tray docklet status icon manager for background media players and daemons"
+contracts = ['tray-icon-manager', 'docklet-host', 'status-icon-protocol']
+upstream_inspirations = ['https://github.com/linuxmint/rhythmbox-tray-icon']

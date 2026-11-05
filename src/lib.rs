@@ -1,14 +1,35 @@
-//! SigmaOS-tray-icon: System tray icon library.
-//!
-//! Provides a shared library for applications to display system tray icons
-//! and menus. Inspired by rhythmbox-tray-icon and libappindicator.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct TrayIcon {
+    pub id: String,
+    pub tooltip: String,
+    pub visible: bool,
+}
 
-pub mod tray;
-pub mod menu;
+#[derive(Debug, Default)]
+pub struct TrayManager {
+    icons: Vec<TrayIcon>,
+}
 
-/// Initialise the tray icon subsystem.
-///
-/// Call once at application startup before creating any tray icons.
-pub fn init() {
-    // TODO: connect to the desktop's appindicator or StatusNotifierItem service
+impl TrayManager {
+    pub fn new() -> Self { Self { icons: Vec::new() } }
+    pub fn add_icon(&mut self, id: &str, tooltip: &str) {
+        self.icons.push(TrayIcon { id: id.into(), tooltip: tooltip.into(), visible: true });
+    }
+    pub fn active_count(&self) -> usize {
+        self.icons.iter().filter(|i| i.visible).count()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_tray_manager_aaa() {
+        // Arrange
+        let mut mgr = TrayManager::new();
+        // Act
+        mgr.add_icon("music-player", "Playing Track 1");
+        // Assert
+        assert_eq!(mgr.active_count(), 1);
+    }
 }
