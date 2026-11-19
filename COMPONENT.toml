@@ -4,3 +4,7 @@ tier = 3
 description = "System tray icon host (XAppStatusIcon)"
 contracts = ['tray-icon-manager', 'docklet-host', 'status-icon-protocol']
 upstream_inspirations = ['https://github.com/linuxmint/rhythmbox-tray-icon']
+[maturity]
+status = "Implemented"
+test_evidence = "5 tests (4 unit + 1 integration) passing with cargo test --offline"
+next_milestone = "Hardware and runtime integration"
